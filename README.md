@@ -113,11 +113,34 @@ This is the basics you need to understand about this library! In the next topics
 
 In the table below you can see all Input Types currently supported by this library. You should only attempt to link supported Input Types to `InputValidator` objects.
 
-| Input Type | Support       |
-| ---------- | ------------- |
-| button     | Not Supported |
-| button     | Not Supported |
+| Input Type     | Support       | Value Type   |
+| -------------- | ------------- | ------------ |
+| button         | Not Supported | -            |
+| checkbox       | Not Supported | -            |
+| color          | Not Supported | -            |
+| date           | Supported     | STRING       |
+| datetime-local | Supported     | STRING       |
+| email          | Supported     | STRING       |
+| file           | Supported     | FILE         |
+| hidden         | Not Supported | -            |
+| image          | Not Supported | -            |
+| month          | Supported     | STRING       |
+| number         | Supported     | INT or FLOAT |
+| password       | Supported     | STRING       |
+| radio          | Not Supported | -            |
+| range          | Not Supported | -            |
+| reset          | Not Supported | -            |
+| search         | Supported     | STRING       |
+| submit         | Not Supported | -            |
+| tel            | Supported     | STRING       |
+| text           | Supported     | STRING       |
+| time           | Supported     | STRING       |
+| url            | Supported     | STRING       |
+| week           | Supported     | STRING       |
+| TAG: Select    | Not Supported | -            |
+| TAG: Text Area | Supported     | STRING       |
 
+s
 
 
 

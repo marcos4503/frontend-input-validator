@@ -4,7 +4,11 @@ The Frontend Input Validator is a Javascript library to be used in the Frontend 
 
 This library, when used in conjunction with <a href="https://github.com/marcos4503/backend-input-validator" target="_blank">Backend Input Validator</a>, provides EXTREMELY easy way to validate user/client inputs in the Frontend or Backend of your website.
 
-This library works quite simply. What you must do is instantiate an object of type `InputValidator` informing the ID of an Input Field on your page and the validation parameters (such as whether to allow an empty field, maximum number of characters, special characters allowed, etc). Once this is done, the `InputValidator` object will be linked with the Input Field and will check if the field is valid, AUTOMATICALLY, whenever the user interacts with the Field or types something in it. You can register a Callback on the instantiated `InputValidator` object to receive automatic validation of the linked Input Field. At any time, you can also easily check whether the field is valid or not.
+# How it works?
+
+This library works quite simply. What you must do is instantiate an object of type `InputValidator` informing the ID of an Input Field on your page and the validation parameters (such as whether to allow an empty field, maximum number of characters, special characters allowed, etc).
+
+Once this is done, the `InputValidator` object will be linked with the Input Field and will check if the field is valid, AUTOMATICALLY, whenever the user interacts with the Field or types something in it. You can register a Callback on the instantiated `InputValidator` object to receive automatic validation of the linked Input Field. At any time, you can also easily check whether the field is valid or not.
 
 # s
 

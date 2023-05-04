@@ -1,4 +1,4 @@
-# Frontend Input Validator aaaaaaa bbbbbbbbbbbb
+# Frontend Input Validator
 
 The Frontend Input Validator is a Javascript library to be used in the Frontend of your website. The objective of this library is to provide a simple, easy to use and low code system for validating text or file inputs in your website Frontend interface. Which is very common in all types of websites, such as registration forms for example.
 
@@ -140,35 +140,28 @@ In the table below you can see all Input Types currently supported by this libra
 | TAG: Select    | Not Supported | -            |
 | TAG: Text Area | Supported     | STRING       |
 
-s
+# Available Validation Parameters
 
+These are all available validation parameters that you can enter when instantiating `InputValidator` objects and validating yours Input Fields.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+| Parameter               | Works On Type | Description |
+| ----------------------- | ------------- | ----------- |
+| allowEmpty              | ALL           | -           |
+| minChars                | STRING        | -           |
+| maxChars                | STRING        | -           |
+| allowNumbers            | STRING        | -           |
+| allowLetters            | STRING        | -           |
+| allowSpace              | STRING        | -           |
+| specialCharsAllowed     | STRING        | -           |
+| minNumberValue          | INT or FLOAT  | -           |
+| maxNumberValue          | INT or FLOAT  | -           |
+| allowNumberZero         | INT or FLOAT  | -           |
+| allowNumberNegative     | INT or FLOAT  | -           |
+| allowNumberPositive     | INT or FLOAT  | -           |
+| minFilesSelection       | FILE          | -           |
+| maxFilesSelection       | FILE          | -           |
+| requiredFilesExtensions | FILE          | -           |
+| maxFilesSizeInKb        | FILE          | -           |
 
 
 

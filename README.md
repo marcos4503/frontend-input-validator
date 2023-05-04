@@ -163,7 +163,11 @@ These are all available validation parameters that you can enter when instantiat
 | requiredFilesExtensions | FILE          | -           |
 | maxFilesSizeInKb        | FILE          | -           |
 
+If you have a validation parameter suggestion, please send it through the "<b>Issues</b>" tab, your suggestion will be very welcome!
 
+# Code examples to validate each Input Type
+
+s
 
 
 

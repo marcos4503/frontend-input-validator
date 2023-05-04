@@ -10,6 +10,16 @@ This library works quite simply. What you must do is instantiate an object of ty
 
 Once this is done, the `InputValidator` object will be linked with the Input Field and will check if the field is valid, AUTOMATICALLY, whenever the user interacts with the Field or types something in it. You can register a Callback on the instantiated `InputValidator` object to receive automatic validation of the linked Input Field. At any time, you can also easily check whether the field is valid or not.
 
+# How to use?
+
+First you need to clone this repository. Open the downloaded file and go to the "Frontend-Input-Validator-Source" folder then copy the "FrontendInputValidator.js" file and place it somewhere on your website.
+
+The next step is to reference the library in your HTML page so that you can use the library's code within your page's Javascript code. To do this, place the HTML code below inside the `<head>` and `</head>` tags of your page. Remember to change the "src" attribute to the path where the "FrontendInputValidator.js" file is!
+
+```html
+<script type="text/javascript" src="../../folder/folder/FrontendInputValidator.js"></script>
+```
+
 # Understand the basics before starting
 
 When you have fields for User Input you usually expect to receive a text input (`STRING`), a number (`INT` or `FLOAT`) or a file (`FILE`). Therefore, when instantiating an object of type `InputValidator`, you need to inform the ID to target Input Field to be valided, the type of value you expect to obtain from that Input Field and, you must inform the validation parameters. See the code below as an example...

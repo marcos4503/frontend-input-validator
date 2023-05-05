@@ -213,6 +213,210 @@ fieldValidation.SetOnValidateCallback(function(isInputValid){
 });
 ```
 
+<h2>Input Type: "datetime-local"</h2>
+
+```javascript
+//HTML
+<input type="date" id="eventDateTime" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("eventDateTime", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetCustomRegexForValidation(/(19|20)[0-9][0-9]-(0[0-9]|1[0-2])-(0[1-9]|([12][0-9]|3[01]))T([01][0-9]|2[0-3]):[0-5][0-9]/g); //<- Validate "YYYY-MM-DDTHH:MM" format
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "email"</h2>
+
+```javascript
+//HTML
+<input type="date" id="emailAddress" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("emailAddress", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetCustomRegexForValidation(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g); //<- Validate "account@example.com" format
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "file"</h2>
+
+```javascript
+//HTML
+<input type="file" id="filePicker" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("filePicker", "FILE", '{ "allowEmpty":false, "requiredFilesExtensions":"png,jpg,jpeg" }');
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "month"</h2>
+
+```javascript
+//HTML
+<input type="month" id="birthdayMonth" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("birthdayMonth", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetCustomRegexForValidation(/([12]\d{3}-(0[1-9]|1[0-2]))/g); //<- Validate "YYYY-MM" format
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "number"</h2>
+
+```javascript
+//HTML
+<input type="number" id="houseNumber" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("houseNumber", "INT", '{ "allowEmpty":false }'); //<- You can use INT if you want an integer or FLOAT if you want an integer or decimal.
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "password"</h2>
+
+```javascript
+//HTML
+<input type="password" id="accountPassword" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("accountPassword", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "search"</h2>
+
+```javascript
+//HTML
+<input type="search" id="searchOnPage" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("searchOnPage", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "tel"</h2>
+
+```javascript
+//HTML
+<input type="tel" id="userPhoneNumber" pattern="^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("userPhoneNumber", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetCustomRegexForValidation(/^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$/g); //<- Validate "(123) 321-3456" format
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "text"</h2>
+
+```javascript
+//HTML
+<input type="text" id="userStatus" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("userStatus", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "time"</h2>
+
+```javascript
+//HTML
+<input type="time" id="eventTime" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("eventTime", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetCustomRegexForValidation(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/g); //<- Validate "HH:MM" format
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "url"</h2>
+
+```javascript
+//HTML
+<input type="url" id="portfolioUrl" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("portfolioUrl", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetCustomRegexForValidation(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g); //<- Validate "https://domain.com/folder/page" format
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>Input Type: "week"</h2>
+
+```javascript
+//HTML
+<input type="week" id="eventWeek" />
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("eventWeek", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetCustomRegexForValidation(/^(\d{4})-W(0[1-9]|[1-4][0-9]|5[0-3])$/g); //<- Validate "YYYY-Www" format
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
+<h2>TextArea</h2>
+
+The `<textarea>` tag is also supported as a normal field to be validated! :)
+
+```javascript
+//HTML
+<textarea id="userBiography"></textarea>
+
+
+//JAVASCRIPT
+var fieldValidation = new InputValidator("userBiography", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
+
 # Support projects like this
 
 If you liked this Library and found it useful for your projects, please consider making a donation (if possible). This would make it even more possible for me to create and continue to maintain projects like this, but if you cannot make a donation, it is still a pleasure for you to use it! Thanks! 😀

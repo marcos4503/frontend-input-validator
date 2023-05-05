@@ -12,12 +12,12 @@ Once this is done, the `InputValidator` object will be linked with the Input Fie
 
 # How to use?
 
-First you need to clone this repository. Open the downloaded file and go to the "Frontend-Input-Validator-Source" folder then copy the "FrontendInputValidator.js" file and place it somewhere on your website.
+First you need to clone this repository. Open the downloaded file and go to the "Frontend-Input-Validator-Source" folder then copy the "frontend-input-validator.js" file and place it somewhere on your website.
 
-The next step is to reference the library in your HTML page so that you can use the library's code within your page's Javascript code. To do this, place the HTML code below inside the `<head>` and `</head>` tags of your page. Remember to change the `src` attribute to the path where the "FrontendInputValidator.js" file is!
+The next step is to reference the library in your HTML page so that you can use the library's code within your page's Javascript code. To do this, place the HTML code below inside the `<head>` and `</head>` tags of your page. Remember to change the `src` attribute to the path where the "frontend-input-validator.js" file is!
 
 ```html
-<script type="text/javascript" src="../../folder/folder/FrontendInputValidator.js"></script>
+<script type="text/javascript" src="../../folder/folder/frontend-input-validator.js"></script>
 ```
 
 # Understand the basics before starting

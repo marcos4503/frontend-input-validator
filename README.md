@@ -19,7 +19,7 @@ The next step is to reference the library in your HTML page so that you can use 
 ```html
 <script type="text/javascript" src="../../folder/folder/frontend-input-validator.js"></script>
 ```
-
+ 
 # Understand the basics before starting
 
 When you have fields for User Input you usually expect to receive a text input (`STRING`), a number (`INT` or `FLOAT`) or a file (`FILE`). Therefore, when instantiating an object of type `InputValidator`, you need to inform the ID to target Input Field to be valided, the type of value you expect to obtain from that Input Field and, you must inform the validation parameters. See the code below as an example...

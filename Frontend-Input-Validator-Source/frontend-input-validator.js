@@ -23,6 +23,7 @@ class InputValidator {
     allowNumbers = true;                  //STRING
     allowLetters = true;                  //STRING
     allowSpace = true;                    //STRING
+    allowLineBreak = true;                //STRING
     specialCharsAllowed = "all";          //STRING
     hasProvidedCustomRegex = false;       //  | _____ STRING
     providedCustomRegex = /.*/g;          //  |
@@ -121,6 +122,7 @@ class InputValidator {
         if (typeof this.parameters.allowNumbers == "boolean") { this.allowNumbers = this.parameters.allowNumbers; }
         if (typeof this.parameters.allowLetters == "boolean") { this.allowLetters = this.parameters.allowLetters; }
         if (typeof this.parameters.allowSpace == "boolean") { this.allowSpace = this.parameters.allowSpace; }
+        if (typeof this.parameters.allowLineBreak == "boolean") { this.allowLineBreak = this.parameters.allowLineBreak; }
         if (typeof this.parameters.specialCharsAllowed == "string") { this.specialCharsAllowed = this.parameters.specialCharsAllowed; }
         if (typeof this.parameters.mustMatchWithRegex == "string") { this.mustMatchWithRegex = this.parameters.mustMatchWithRegex; }
         if (typeof this.parameters.minNumberValue == "number") { this.minNumberValue = this.parameters.minNumberValue; }
@@ -186,6 +188,9 @@ class InputValidator {
             //Check if have space
             if (this.allowSpace == false && /\s/g.test(valueToValidate) == true)
                 isInputValid = false;
+            //Check if have line break
+            if (this.allowLineBreak == false && /\r|\n/g.test(valueToValidate) == true)
+                isInputValid = false;
 
             //Check if have unallowed special characters
             if (this.specialCharsAllowed != "all") {
@@ -206,42 +211,29 @@ class InputValidator {
                 var customRegExp = "^[a-zA-Z0-9 \u00C0-\u00D6 \u00D8-\u00F6 \u00F8-\u00FF \u010D\u0107\u010C\u0106\u0160\u0161\u0178\u0153\u0152 ";               /*  /[a-zA-Z0-9 À-Ö Ø-ö ø-ÿ čćČĆŠšŸœŒ]/g  */
                 for (var i = 0; i < charsAllowed.length; i++) {
                     //If is a special character for regex syntax
-                    if (charsAllowed[i] == ".")
-                        customRegExp += "\\.";
-                    if (charsAllowed[i] == "*")
-                        customRegExp += "\\*";
-                    if (charsAllowed[i] == "+")
-                        customRegExp += "\\+";
-                    if (charsAllowed[i] == "?")
-                        customRegExp += "\\?";
-                    if (charsAllowed[i] == "^")
-                        customRegExp += "\\^";
-                    if (charsAllowed[i] == "$")
-                        customRegExp += "\\$";
-                    if (charsAllowed[i] == "|")
-                        customRegExp += "\\|";
-                    if (charsAllowed[i] == "(")
-                        customRegExp += "\\(";
-                    if (charsAllowed[i] == ")")
-                        customRegExp += "\\)";
-                    if (charsAllowed[i] == "[")
-                        customRegExp += "\\[";
-                    if (charsAllowed[i] == "]")
-                        customRegExp += "\\]";
-                    if (charsAllowed[i] == "{")
-                        customRegExp += "\\{";
-                    if (charsAllowed[i] == "}")
-                        customRegExp += "\\}";
-                    if (charsAllowed[i] == "\\")
-                        customRegExp += "\\\\";
+                    if (charsAllowed[i] == ".") { customRegExp += "\\."; continue; }
+                    if (charsAllowed[i] == "*") { customRegExp += "\\*"; continue; }
+                    if (charsAllowed[i] == "+") { customRegExp += "\\+"; continue; }
+                    if (charsAllowed[i] == "?") { customRegExp += "\\?"; continue; }
+                    if (charsAllowed[i] == "^") { customRegExp += "\\^"; continue; }
+                    if (charsAllowed[i] == "$") { customRegExp += "\\$"; continue; }
+                    if (charsAllowed[i] == "|") { customRegExp += "\\|"; continue; }
+                    if (charsAllowed[i] == "(") { customRegExp += "\\("; continue; }
+                    if (charsAllowed[i] == ")") { customRegExp += "\\)"; continue; }
+                    if (charsAllowed[i] == "[") { customRegExp += "\\["; continue; }
+                    if (charsAllowed[i] == "]") { customRegExp += "\\]"; continue; }
+                    if (charsAllowed[i] == "{") { customRegExp += "\\{"; continue; }
+                    if (charsAllowed[i] == "}") { customRegExp += "\\}"; continue; }
+                    if (charsAllowed[i] == "\\") { customRegExp += "\\\\"; continue; }
                     //If is a normal character
                     customRegExp += charsAllowed[i];
                 }
                 customRegExp += "]+$";
 
                 //If the string don't match with the custom regex, the string have unallowed special chars, so is invalid
-                if (new RegExp(customRegExp, "g").test(valueToValidate) == false)
-                    isInputValid = false;
+                if (typeof valueToValidate === "string" && valueToValidate != "")      //<- Only validate if is not empty
+                    if (new RegExp(customRegExp, "g").test(valueToValidate) == false)
+                        isInputValid = false;
             }
 
             //Check if match with the custom regex (if has provided a custom regex)
@@ -260,6 +252,9 @@ class InputValidator {
                 isInputValid = false;
             //Check if is a valid number
             if (isNaN(valueToValidate) == true)
+                isInputValid = false;
+            //Check if have line break
+            if (/\r|\n/g.test(valueToValidate) == true)
                 isInputValid = false;
             //Try to parse float to check if is a real number
             var tryParseFloat = 0.0;
@@ -302,6 +297,9 @@ class InputValidator {
                 isInputValid = false;
             //Check if is a valid number
             if (isNaN(valueToValidate) == true)
+                isInputValid = false;
+            //Check if have line break
+            if (/\r|\n/g.test(valueToValidate) == true)
                 isInputValid = false;
             //Try to parse float to check if is a real number
             var tryParseFloat = 0.0;

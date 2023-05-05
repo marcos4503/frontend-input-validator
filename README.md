@@ -175,7 +175,7 @@ These are all available validation parameters that you can enter when instantiat
 
 If you have a validation parameter suggestion, please send it through the "<b>Issues</b>" tab, your suggestion will be very welcome!
 
-# Validating Text Fields with a Custom Regex
+# Validating Fields with a Custom Regex
 
 This library also supports validating Fields based on a Regex provided by you. If you are going to validate a field that expects inputs of type `STRING`, you can use method `SetCustomRegexForValidation()` to provide a custom Regex to the `InputValidator` object and then it will take your custom Regex into account to validate the Field. The field will only be considered valid if it complies with the validation parameters that you impose, and if it also complies with your custom Regex.
 
@@ -188,18 +188,30 @@ To provide a custom Regex to be taken into account for validation, just call the
 //On Javascript side...
 var phoneNumberValidation = new InputValidator("phoneNumberField", "STRING", '{ "allowEmpty":false }');
 phoneNumberValidation.SetCustomRegexForValidation(/^\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/g); //<- Validate US numbers
-phoneNumberValidation.phoneNumberValidation(function(isInputValid){
+phoneNumberValidation.SetOnValidateCallback(function(isInputValid){
     //on receive response from validation
 });
 ```
 
 # Code examples to validate each Input Type
 
-s
+Now let's see code examples to validate EVERY type of Input Field supported by this library.
+
+<h2>Input Type: "date"</h2>
+
+```javascript
+//HTML
+<input type="date" id="eventDate" />
 
 
-
-
+//JAVASCRIPT
+var fieldValidation = new InputValidator("eventDate", "STRING", '{ "allowEmpty":false }');
+fieldValidation.SetCustomRegexForValidation(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/g); //<- Validate "YYYY-MM-DD" format
+fieldValidation.SetOnValidateCallback(function(isInputValid){
+    if (isInputValid == true) { console.log("is valid!"); }
+    if (isInputValid == false) { console.log("is invalid!"); }
+});
+```
 
 # Support projects like this
 

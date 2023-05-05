@@ -217,7 +217,7 @@ fieldValidation.SetOnValidateCallback(function(isInputValid){
 
 ```javascript
 //HTML
-<input type="date" id="eventDateTime" />
+<input type="datetime-local" id="eventDateTime" />
 
 
 //JAVASCRIPT
@@ -233,7 +233,7 @@ fieldValidation.SetOnValidateCallback(function(isInputValid){
 
 ```javascript
 //HTML
-<input type="date" id="emailAddress" />
+<input type="email" id="emailAddress" />
 
 
 //JAVASCRIPT

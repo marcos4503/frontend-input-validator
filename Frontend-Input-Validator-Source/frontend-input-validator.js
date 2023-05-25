@@ -43,40 +43,40 @@ class InputValidator {
     //Core methods
 
     constructor(inputElementId, expectedType, parameters) {
-        //Build this instance
-        try {
-            //First try to parse the JSON
-            this.parameters = JSON.parse(parameters);
-
-            //If the expected type don't is valid, cancel
-            if (expectedType != "STRING" && expectedType != "INT" && expectedType != "FLOAT" && expectedType != "FILE") {
-                console.error("Could not initialize object \"InputValidator\". The expected value type is not valid!");
-                return;
-            }
-            //Get the expected type
-            this.expectedType = expectedType;
-            //Try to find the input element
-            var inputElement = document.getElementById(inputElementId);
-            //If the input element is not found, cancel
-            if (inputElement == null) {
-                console.error("Could not initialize object \"InputValidator\". The informed ID does not refer to any input element!");
-                return;
-            }
-            //If the input element is not valid, cancel
-            if (inputElement.tagName != "INPUT" && inputElement.tagName != "TEXTAREA") {
-                console.error("Could not initialize object \"InputValidator\". The informed ID does not refer to any element of type INPUT or TEXTAREA!");
-                return;
-            }
-            //Get the input element
-            this.inputElement = inputElement;
-
-            //Inform that is initialized successfully
-            this.isInitialized = true;
+        //Check if parameter is a object
+        if (typeof parameters !== "object") {
+            console.error("Could not initialize object \"InputValidator\". The informed parameters are not of type OBJECT.");
+            return;
         }
-        catch (e) {
-            console.error("Could not initialize object \"InputValidator\". Informed validation requirements JSON is not valid!");
+        //Get the parameters
+        this.parameters = parameters;
+
+        //If the expected type don't is valid, cancel
+        if (expectedType != "STRING" && expectedType != "INT" && expectedType != "FLOAT" && expectedType != "FILE") {
+            console.error("Could not initialize object \"InputValidator\". The expected value type is not valid! It must be of type STRING, INT, FLOAT or FILE!");
+            return;
         }
-        //End
+        //Get the expected type
+        this.expectedType = expectedType;
+
+        //Try to find the input element
+        var inputElement = document.getElementById(inputElementId);
+        //If the input element is not found, cancel
+        if (inputElement == null) {
+            console.error("Could not initialize object \"InputValidator\". The informed ID does not refer to any input element!");
+            return;
+        }
+        //If the input element is not valid, cancel
+        if (inputElement.tagName != "INPUT" && inputElement.tagName != "TEXTAREA") {
+            console.error("Could not initialize object \"InputValidator\". The informed ID does not refer to any element of type INPUT or TEXTAREA!");
+            return;
+        }
+        //Get the input element
+        this.inputElement = inputElement;
+
+
+        //Inform that is initialized successfully
+        this.isInitialized = true;
     }
 
     SetCustomRegexForValidation(customRegex) {

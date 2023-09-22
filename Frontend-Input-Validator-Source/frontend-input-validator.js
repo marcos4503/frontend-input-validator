@@ -12,6 +12,7 @@ class InputValidator {
     isAssociatedFieldValid = true;
 
     //Private variables
+    logsPrefix = "";
     inputElement;
     expectedType = "NONE";
     parameters;
@@ -45,7 +46,7 @@ class InputValidator {
     constructor(inputElementId, expectedType, parameters) {
         //Check if parameter is a object
         if (typeof parameters !== "object") {
-            console.error("Could not initialize object \"InputValidator\". The informed parameters are not of type OBJECT.");
+            console.error(this.logsPrefix + "Could not initialize object \"InputValidator\". The informed parameters are not of type OBJECT.");
             return;
         }
         //Get the parameters
@@ -53,7 +54,7 @@ class InputValidator {
 
         //If the expected type don't is valid, cancel
         if (expectedType != "STRING" && expectedType != "INT" && expectedType != "FLOAT" && expectedType != "FILE") {
-            console.error("Could not initialize object \"InputValidator\". The expected value type is not valid! It must be of type STRING, INT, FLOAT or FILE!");
+            console.error(this.logsPrefix + "Could not initialize object \"InputValidator\". The expected value type is not valid! It must be of type STRING, INT, FLOAT or FILE!");
             return;
         }
         //Get the expected type
@@ -63,12 +64,12 @@ class InputValidator {
         var inputElement = document.getElementById(inputElementId);
         //If the input element is not found, cancel
         if (inputElement == null) {
-            console.error("Could not initialize object \"InputValidator\". The informed ID does not refer to any input element!");
+            console.error(this.logsPrefix + "Could not initialize object \"InputValidator\". The informed ID does not refer to any input element!");
             return;
         }
         //If the input element is not valid, cancel
         if (inputElement.tagName != "INPUT" && inputElement.tagName != "TEXTAREA") {
-            console.error("Could not initialize object \"InputValidator\". The informed ID does not refer to any element of type INPUT or TEXTAREA!");
+            console.error(this.logsPrefix + "Could not initialize object \"InputValidator\". The informed ID does not refer to any element of type INPUT or TEXTAREA!");
             return;
         }
         //Get the input element
@@ -82,12 +83,12 @@ class InputValidator {
     SetCustomRegexForValidation(customRegex) {
         //If the expected type of this object instance is not a String, cancel this call
         if (this.expectedType != "STRING") {
-            console.error("Could not define a custom Regex for validation on the Input Validator object! The object expects to validate an input of type \"" + this.expectedType + "\", and it is only possible to provide a custom Regex for inputs of Type STRING!");
+            console.error(this.logsPrefix + "Could not define a custom Regex for validation on the Input Validator object! The object expects to validate an input of type \"" + this.expectedType + "\", and it is only possible to provide a custom Regex for inputs of Type STRING!");
             return;
         }
         //If the content provided is not a regex, cancel this call
         if (typeof customRegex !== "object") {
-            console.error("Could not define a custom Regex for validation on the Input Validator object! The given content is not object of type Regex!");
+            console.error(this.logsPrefix + "Could not define a custom Regex for validation on the Input Validator object! The given content is not object of type Regex!");
             return;
         }
 
@@ -142,12 +143,12 @@ class InputValidator {
     isTheAssociatedFieldValid() {
         //If this object is not initialized successfully, cancel this call
         if (this.isInitialized == false) {
-            console.error("Could not check validation on object \"Input Validator\". The object was not properly initialized or instantiated.");
+            console.error(this.logsPrefix + "Could not check validation on object \"Input Validator\". The object was not properly initialized or instantiated.");
             return;
         }
         //If don't called "SetOnValidateCallback();" yet
         if (this.isCalledSetOnValidateCallback == false) {
-            console.error("Could not check validation on object \"Input Validator\". Method \"SetOnValidateCallback()\" was not called on the object, so it is not prepared for validation and there is no callback to receive it!");
+            console.error(this.logsPrefix + "Could not check validation on object \"Input Validator\". Method \"SetOnValidateCallback()\" was not called on the object, so it is not prepared for validation and there is no callback to receive it!");
             return;
         }
 
